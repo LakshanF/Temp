@@ -61,6 +61,9 @@ namespace Microsoft.DotNet.CoreSetup.Test.HostActivation.DependencyResolution
             string nameWOExtensionCaseChanged = (Char.IsUpper(nameWOExtension[0]) ? nameWOExtension[0].ToString().ToLower() : nameWOExtension[0].ToString().ToUpper()) + nameWOExtension.Substring(1);
             string changeFile = Path.Combine(Path.GetDirectoryName(fileName), (nameWOExtensionCaseChanged + Path.GetExtension(fileName)));
 
+            // on mac, hostpolicy returns the changed name for deps file as well
+            string changeDepsFile = Path.Combine(Path.GetDirectoryName(component.DepsJson), (nameWOExtensionCaseChanged + ".deps" + Path.GetExtension(component.DepsJson)));
+
             // Rename
             File.Move(fileName, changeFile);
 
@@ -72,15 +75,33 @@ namespace Microsoft.DotNet.CoreSetup.Test.HostActivation.DependencyResolution
                     .Should().Pass()
                     .And.HaveStdErrContaining($"Failed to locate managed application [{component.AppDll}]");
             }
-            else
+            else if(RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 sharedTestState.RunComponentResolutionTest(component)
                     .Should().Pass()
                     .And.HaveStdOutContaining("corehost_resolve_component_dependencies:Success")
-                    .And.HaveStdOutContaining($"corehost_resolve_component_dependencies assemblies:[{component.AppDll}{Path.PathSeparator}]")
+                    // //corehost_resolve_component_dependencies assemblies:[/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.dll:]
+                    // .And.HaveStdOutContaining($"corehost_resolve_component_dependencies assemblies:[{changeFile}{Path.PathSeparator}]")
+                    // //app_root='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/' 
                     .And.HaveStdErrContaining($"app_root='{component.Location}{Path.DirectorySeparatorChar}'")
+                    // //deps='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.deps.json'
+                    .And.HaveStdErrContaining($"deps='{changeDepsFile}'")
+                    // //mgd_app='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.dll'
+                    .And.HaveStdErrContaining($"mgd_app='{changeFile}'");
+            }else
+            {
+                sharedTestState.RunComponentResolutionTest(component)
+                    .Should().Pass()
+                    .And.HaveStdOutContaining("corehost_resolve_component_dependencies:Success")
+                    //corehost_resolve_component_dependencies assemblies:[/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.dll:]
+                    .And.HaveStdOutContaining($"corehost_resolve_component_dependencies assemblies:[{component.AppDll}{Path.PathSeparator}]")
+                    //app_root='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/' 
+                    .And.HaveStdErrContaining($"app_root='{component.Location}{Path.DirectorySeparatorChar}'")
+                    //deps='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.deps.json'
                     .And.HaveStdErrContaining($"deps='{component.DepsJson}'")
+                    //mgd_app='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.dll'
                     .And.HaveStdErrContaining($"mgd_app='{component.AppDll}'");
+
             }
         }
 
@@ -115,10 +136,19 @@ namespace Microsoft.DotNet.CoreSetup.Test.HostActivation.DependencyResolution
                 sharedTestState.RunComponentResolutionTest(component)
                     .Should().Pass()
                     .And.HaveStdOutContaining("corehost_resolve_component_dependencies:Success")
-                    .And.HaveStdOutContaining($"corehost_resolve_component_dependencies assemblies:[{component.AppDll}{Path.PathSeparator}]")
+                    // //corehost_resolve_component_dependencies assemblies:[/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.dll:]
+                    // .And.HaveStdOutContaining($"corehost_resolve_component_dependencies assemblies:[{changeFile}{Path.PathSeparator}]")
+                    // //app_root='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/' 
                     .And.HaveStdErrContaining($"app_root='{component.Location}{Path.DirectorySeparatorChar}'")
-                    .And.HaveStdErrContaining($"deps='{component.DepsJson}'")
-                    .And.HaveStdErrContaining($"mgd_app='{component.AppDll}'");
+                    // //deps='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.deps.json'
+                    .And.HaveStdErrContaining($"deps='{changeDepsFile}'")
+                    // //mgd_app='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.dll'
+                    .And.HaveStdErrContaining($"mgd_app='{changeFile}'");
+                    // .And.HaveStdOutContaining("corehost_resolve_component_dependencies:Success")
+                    // .And.HaveStdOutContaining($"corehost_resolve_component_dependencies assemblies:[{component.AppDll}{Path.PathSeparator}]")
+                    // .And.HaveStdErrContaining($"app_root='{component.Location}{Path.DirectorySeparatorChar}'")
+                    // .And.HaveStdErrContaining($"deps='{component.DepsJson}'")
+                    // .And.HaveStdErrContaining($"mgd_app='{component.AppDll}'");
             }
         }
 
@@ -133,6 +163,8 @@ namespace Microsoft.DotNet.CoreSetup.Test.HostActivation.DependencyResolution
             string nameWOExtension = Path.GetFileNameWithoutExtension(fileName);
             string nameWOExtensionCaseChanged = (Char.IsUpper(nameWOExtension[0]) ? nameWOExtension[0].ToString().ToLower() : nameWOExtension[0].ToString().ToUpper()) + nameWOExtension.Substring(1);
             string changeFile = Path.Combine(Path.GetDirectoryName(fileName), (nameWOExtensionCaseChanged + Path.GetExtension(fileName)));
+
+            string changeDepsFile = Path.Combine(Path.GetDirectoryName(component.DepsJson), (nameWOExtensionCaseChanged + ".deps" + Path.GetExtension(component.DepsJson)));
 
             // Rename
             File.Move(fileName, changeFile);
@@ -152,10 +184,19 @@ namespace Microsoft.DotNet.CoreSetup.Test.HostActivation.DependencyResolution
                 sharedTestState.RunComponentResolutionTest(component)
                     .Should().Pass()
                     .And.HaveStdOutContaining("corehost_resolve_component_dependencies:Success")
-                    .And.HaveStdOutContaining($"corehost_resolve_component_dependencies assemblies:[{component.AppDll}{Path.PathSeparator}{changeFile}{Path.PathSeparator}]")
+                    // //corehost_resolve_component_dependencies assemblies:[/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.dll:]
+                    // .And.HaveStdOutContaining($"corehost_resolve_component_dependencies assemblies:[{changeFile}{Path.PathSeparator}]")
+                    // //app_root='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/' 
                     .And.HaveStdErrContaining($"app_root='{component.Location}{Path.DirectorySeparatorChar}'")
-                    .And.HaveStdErrContaining($"deps='{component.DepsJson}'")
-                    .And.HaveStdErrContaining($"mgd_app='{component.AppDll}'");
+                    // //deps='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.deps.json'
+                    .And.HaveStdErrContaining($"deps='{changeDepsFile}'")
+                    // //mgd_app='/Users/lakshan/core/runtime/artifacts/tests/Debug/ha/5/ComponentWithNoDependencies/componentWithNoDependencies.dll'
+                    .And.HaveStdErrContaining($"mgd_app='{changeFile}'");
+                    // .And.HaveStdOutContaining("corehost_resolve_component_dependencies:Success")
+                    // .And.HaveStdOutContaining($"corehost_resolve_component_dependencies assemblies:[{component.AppDll}{Path.PathSeparator}{changeFile}{Path.PathSeparator}]")
+                    // .And.HaveStdErrContaining($"app_root='{component.Location}{Path.DirectorySeparatorChar}'")
+                    // .And.HaveStdErrContaining($"deps='{component.DepsJson}'")
+                    // .And.HaveStdErrContaining($"mgd_app='{component.AppDll}'");
             }
         }
 
