@@ -1,0 +1,84 @@
+
+sxe ld:Windows.Networking.Connectivity.dll
+
+
+    //
+    // onecoreuap\net\netprofiles\winrt\networkinformation\lib\networkinformationfactory.cpp
+    //
+
+bp Windows_Networking_Connectivity!Windows::Networking::Connectivity::NetworkInformationFactory::add_NetworkStatusChanged
+bp Windows_Networking_Connectivity!Windows::Networking::Connectivity::NetworkInformationFactory::remove_NetworkStatusChanged
+
+
+0:000> kP1
+Child-SP          RetAddr           Call Site
+00000000`00ffec18 00007fff`12800660 Windows_Networking_Connectivity!Windows::Networking::Connectivity::NetworkInformationFactory::add_NetworkStatusChanged(
+                        struct Windows::Networking::Connectivity::INetworkStatusChangedEventHandler * networkStatusHandler = 0x00000000`01150018,
+                        struct EventRegistrationToken * eventCookie = 0x00000000`00ffeca8)
+
+0:000> !sos.dumpccw 00000000`01150018
+CCW:               0000000001150000
+Managed object:    0000000003ba3618
+Outer IUnknown:    0000000000000000
+Ref count:         1
+Flags:
+RefCounted Handle: 00000000011019f8 (STRONG)
+COM interface pointers:
+              IP               MT Type
+0000000001150018 00007fff126f6770 Windows.Networking.Connectivity.NetworkStatusChangedEventHandler
+
+
+
+    //
+    // After the domains have been unloaded, "sxe rtt" catches events here:
+    //
+
+0:010> k
+Child-SP          RetAddr           Call Site
+00000000`1df4ef50 00007fff`9820a4a5 KERNELBASE!RaiseException+0x68
+00000000`1df4f030 00007fff`8656fdb7 combase!RoTransformErrorImpl+0x8f9e9
+00000000`1df4f950 00007fff`86570086 Windows_Networking_Connectivity!Microsoft::WRL::InvokeTraits<-2>::InvokeDelegates<<lambda_2378461f0f706ed20eacc3dd5554e7e2>,Windows::Networking::Connectivity::INetworkStatusChangedEventHandler>+0x9f
+(Inline Function) --------`-------- Windows_Networking_Connectivity!Microsoft::WRL::EventSource<Windows::Networking::Connectivity::INetworkStatusChangedEventHandler,Microsoft::WRL::InvokeModeOptions<-2> >::DoInvoke+0x3e
+(Inline Function) --------`-------- Windows_Networking_Connectivity!Microsoft::WRL::EventSource<Windows::Networking::Connectivity::INetworkStatusChangedEventHandler,Microsoft::WRL::InvokeModeOptions<-2> >::InvokeAll+0x3e
+00000000`1df4f9b0 00007fff`8657010c Windows_Networking_Connectivity!Windows::Networking::Connectivity::CEventDispatcher::_InvokeListeners+0x82
+00000000`1df4f9e0 00007fff`9896501e Windows_Networking_Connectivity!Windows::Networking::Connectivity::CEventDispatcher::_InvokeListenersCallback+0x5c
+00000000`1df4fa10 00007fff`98963234 ntdll!TppWorkpExecuteCallback+0x35e
+00000000`1df4fad0 00007fff`98628364 ntdll!TppWorkerThread+0x474
+00000000`1df4fed0 00007fff`989970d1 KERNEL32!BaseThreadInitThunk+0x14
+00000000`1df4ff00 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+
+
+    //
+    // When the managed Main method is tagged with [STAThread], disabling/enabling the network
+    // adapter triggers GIT unmarshaling along the following stack (just like in #T237).
+    //
+    // Just like in #T237:
+    //    - The CCW refcount starts at 2.
+    //    - Each call results in one over-deref.
+    //
+    // As a result, the third network status change event tries to interact with a freed CCW
+    // (since the refcount dropped to zero during the second event) and reliably AVs.
+    //
+
+0:006> k
+Child-SP          RetAddr           Call Site
+00000000`1c66f0a8 00007fff`98116899 clr!ComCallUnmarshal::UnmarshalInterface
+(Inline Function) --------`-------- combase!CustomUnmarshalInterface+0x31d
+00000000`1c66f0b0 00007fff`98122700 combase!_CoUnmarshalInterface+0x6d9
+00000000`1c66f390 00007fff`8656ff3d combase!CGIPTable::GetInterfaceFromGlobal+0x540
+(Inline Function) --------`-------- Windows_Networking_Connectivity!Windows::Internal::GitPtrImpl<Windows::Internal::GitPtr>::Localize+0x35
+(Inline Function) --------`-------- Windows_Networking_Connectivity!Windows::Internal::GitPtrImpl<Windows::Internal::GitPtr>::CopyLocal+0x3e
+00000000`1c66f450 00007fff`8656fd6b Windows_Networking_Connectivity!Windows::Internal::Details::GitInvokeHelper<Windows::Networking::Connectivity::INetworkStatusChangedEventHandler,Windows::Internal::GitPtr,1>::Invoke+0x5d
+(Inline Function) --------`-------- Windows_Networking_Connectivity!Microsoft::WRL::EventSource<Windows::Networking::Connectivity::INetworkStatusChangedEventHandler,Microsoft::WRL::InvokeModeOptions<-2> >::InvokeAll::__l2::<lambda_2378461f0f706ed20eacc3dd5554e7e2>::operator()+0x15
+00000000`1c66f4a0 00007fff`86570086 Windows_Networking_Connectivity!Microsoft::WRL::InvokeTraits<-2>::InvokeDelegates<<lambda_2378461f0f706ed20eacc3dd5554e7e2>,Windows::Networking::Connectivity::INetworkStatusChangedEventHandler>+0x53
+(Inline Function) --------`-------- Windows_Networking_Connectivity!Microsoft::WRL::EventSource<Windows::Networking::Connectivity::INetworkStatusChangedEventHandler,Microsoft::WRL::InvokeModeOptions<-2> >::DoInvoke+0x3e
+(Inline Function) --------`-------- Windows_Networking_Connectivity!Microsoft::WRL::EventSource<Windows::Networking::Connectivity::INetworkStatusChangedEventHandler,Microsoft::WRL::InvokeModeOptions<-2> >::InvokeAll+0x3e
+00000000`1c66f500 00007fff`8657010c Windows_Networking_Connectivity!Windows::Networking::Connectivity::CEventDispatcher::_InvokeListeners+0x82
+00000000`1c66f530 00007fff`9896501e Windows_Networking_Connectivity!Windows::Networking::Connectivity::CEventDispatcher::_InvokeListenersCallback+0x5c
+00000000`1c66f560 00007fff`98963234 ntdll!TppWorkpExecuteCallback+0x35e
+00000000`1c66f620 00007fff`98628364 ntdll!TppWorkerThread+0x474
+00000000`1c66fa20 00007fff`989970d1 KERNEL32!BaseThreadInitThunk+0x14
+00000000`1c66fa50 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+
