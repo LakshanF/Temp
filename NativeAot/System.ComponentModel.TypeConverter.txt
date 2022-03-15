@@ -1,0 +1,29 @@
+C:\work\currentWork\runtime\.dotnet
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Microsoft.Interop.SourceGeneration -> C:\work\currentWork\runtime\artifacts\bin\Microsoft.Interop.SourceGeneration\Release\netstandard2.0\Microsoft.Interop.SourceGeneration.dll
+  LibraryImportGenerator -> C:\work\currentWork\runtime\artifacts\bin\LibraryImportGenerator\Release\netstandard2.0\Microsoft.Interop.LibraryImportGenerator.dll
+  System.Text.RegularExpressions.Generator -> C:\work\currentWork\runtime\artifacts\bin\System.Text.RegularExpressions.Generator\Release\netstandard2.0\System.Text.RegularExpressions.Generator.dll
+  System.Runtime -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime\ref\Release\net7.0\System.Runtime.dll
+  System.ComponentModel -> C:\work\currentWork\runtime\artifacts\bin\System.ComponentModel\ref\Release\net7.0\System.ComponentModel.dll
+  System.Numerics.Vectors -> C:\work\currentWork\runtime\artifacts\bin\System.Numerics.Vectors\ref\Release\net7.0\System.Numerics.Vectors.dll
+  System.Runtime.Extensions -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime.Extensions\ref\Release\net7.0\System.Runtime.Extensions.dll
+  System.Collections -> C:\work\currentWork\runtime\artifacts\bin\System.Collections\ref\Release\net7.0\System.Collections.dll
+  System.Collections.NonGeneric -> C:\work\currentWork\runtime\artifacts\bin\System.Collections.NonGeneric\ref\Release\net7.0\System.Collections.NonGeneric.dll
+  System.Resources.Writer -> C:\work\currentWork\runtime\artifacts\bin\System.Resources.Writer\ref\Release\net7.0\System.Resources.Writer.dll
+  System.ObjectModel -> C:\work\currentWork\runtime\artifacts\bin\System.ObjectModel\ref\Release\net7.0\System.ObjectModel.dll
+  System.ComponentModel.Primitives -> C:\work\currentWork\runtime\artifacts\bin\System.ComponentModel.Primitives\ref\Release\net7.0\System.ComponentModel.Primitives.dll
+  System.Drawing.Primitives -> C:\work\currentWork\runtime\artifacts\bin\System.Drawing.Primitives\ref\Release\net7.0\System.Drawing.Primitives.dll
+  System.ComponentModel.TypeConverter -> C:\work\currentWork\runtime\artifacts\bin\System.ComponentModel.TypeConverter\ref\Release\net7.0\System.ComponentModel.TypeConverter.dll
+C:\work\currentWork\runtime\src\libraries\System.ComponentModel.TypeConverter\src\System\ComponentModel\EnumConverter.cs(172,39): error IL3050: Using member 'System.Enum.GetValues(Type)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. It might not be possible to create an array of the enum type at runtime. Use the GetValues<TEnum> overload instead. [C:\work\currentWork\runtime\src\libraries\System.ComponentModel.TypeConverter\src\System.ComponentModel.TypeConverter.csproj]
+
+Build FAILED.
+
+C:\work\currentWork\runtime\src\libraries\System.ComponentModel.TypeConverter\src\System\ComponentModel\EnumConverter.cs(172,39): error IL3050: Using member 'System.Enum.GetValues(Type)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. It might not be possible to create an array of the enum type at runtime. Use the GetValues<TEnum> overload instead. [C:\work\currentWork\runtime\src\libraries\System.ComponentModel.TypeConverter\src\System.ComponentModel.TypeConverter.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:14.66

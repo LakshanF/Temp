@@ -1,0 +1,46 @@
+C:\work\currentWork\runtime\.dotnet
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Microsoft.Interop.SourceGeneration -> C:\work\currentWork\runtime\artifacts\bin\Microsoft.Interop.SourceGeneration\Release\netstandard2.0\Microsoft.Interop.SourceGeneration.dll
+  LibraryImportGenerator -> C:\work\currentWork\runtime\artifacts\bin\LibraryImportGenerator\Release\netstandard2.0\Microsoft.Interop.LibraryImportGenerator.dll
+  System.Runtime -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime\ref\Release\net7.0\System.Runtime.dll
+  System.Security.Principal -> C:\work\currentWork\runtime\artifacts\bin\System.Security.Principal\ref\Release\net7.0\System.Security.Principal.dll
+  System.ComponentModel -> C:\work\currentWork\runtime\artifacts\bin\System.ComponentModel\ref\Release\net7.0\System.ComponentModel.dll
+  System.Runtime.Extensions -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime.Extensions\ref\Release\net7.0\System.Runtime.Extensions.dll
+  System.Collections -> C:\work\currentWork\runtime\artifacts\bin\System.Collections\ref\Release\net7.0\System.Collections.dll
+  Microsoft.Win32.Primitives -> C:\work\currentWork\runtime\artifacts\bin\Microsoft.Win32.Primitives\ref\Release\net7.0\Microsoft.Win32.Primitives.dll
+  System.Collections.NonGeneric -> C:\work\currentWork\runtime\artifacts\bin\System.Collections.NonGeneric\ref\Release\net7.0\System.Collections.NonGeneric.dll
+  System.Runtime.InteropServices -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime.InteropServices\ref\Release\net7.0\System.Runtime.InteropServices.dll
+  System.ObjectModel -> C:\work\currentWork\runtime\artifacts\bin\System.ObjectModel\ref\Release\net7.0\System.ObjectModel.dll
+  System.Memory -> C:\work\currentWork\runtime\artifacts\bin\System.Memory\ref\Release\net7.0\System.Memory.dll
+  System.ComponentModel.Primitives -> C:\work\currentWork\runtime\artifacts\bin\System.ComponentModel.Primitives\ref\Release\net7.0\System.ComponentModel.Primitives.dll
+  System.Net.Primitives -> C:\work\currentWork\runtime\artifacts\bin\System.Net.Primitives\ref\Release\net7.0\System.Net.Primitives.dll
+  System.Collections.Specialized -> C:\work\currentWork\runtime\artifacts\bin\System.Collections.Specialized\ref\Release\net7.0\System.Collections.Specialized.dll
+  System.Net.WebSockets -> C:\work\currentWork\runtime\artifacts\bin\System.Net.WebSockets\ref\Release\net7.0\System.Net.WebSockets.dll
+  System.Security.Claims -> C:\work\currentWork\runtime\artifacts\bin\System.Security.Claims\ref\Release\net7.0\System.Security.Claims.dll
+  System.Security.Principal.Windows -> C:\work\currentWork\runtime\artifacts\bin\System.Security.Principal.Windows\ref\Release\net7.0\System.Security.Principal.Windows.dll
+  System.Security.Principal.Windows -> C:\work\currentWork\runtime\artifacts\bin\System.Security.Principal.Windows\Release\net7.0\System.Security.Principal.Windows.dll
+  System.Net.WebHeaderCollection -> C:\work\currentWork\runtime\artifacts\bin\System.Net.WebHeaderCollection\ref\Release\net7.0\System.Net.WebHeaderCollection.dll
+C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System\Security\Principal\WindowsIdentity.cs(1162,84): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.PtrToStructure(IntPtr, Type)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the object might not be available. [C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System.Security.Principal.Windows.csproj]
+C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System\Security\Principal\WindowsIdentity.cs(1204,128): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.PtrToStructure(IntPtr, Type)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the object might not be available. [C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System.Security.Principal.Windows.csproj]
+C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System\Security\Principal\WindowsIdentity.cs(1214,109): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.PtrToStructure(IntPtr, Type)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the object might not be available. [C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System.Security.Principal.Windows.csproj]
+  System.Security.SecureString -> C:\work\currentWork\runtime\artifacts\bin\System.Security.SecureString\ref\Release\net7.0\System.Security.SecureString.dll
+  System.Security.Cryptography -> C:\work\currentWork\runtime\artifacts\bin\System.Security.Cryptography\ref\Release\net7.0\System.Security.Cryptography.dll
+  System.Security.Cryptography.X509Certificates -> C:\work\currentWork\runtime\artifacts\bin\System.Security.Cryptography.X509Certificates\ref\Release\net7.0\System.Security.Cryptography.X509Certificates.dll
+  System.Net.Security -> C:\work\currentWork\runtime\artifacts\bin\System.Net.Security\ref\Release\net7.0\System.Net.Security.dll
+  System.Net.HttpListener -> C:\work\currentWork\runtime\artifacts\bin\System.Net.HttpListener\ref\Release\net7.0\System.Net.HttpListener.dll
+  System.Net.HttpListener -> C:\work\currentWork\runtime\artifacts\bin\System.Net.HttpListener\Release\net7.0\System.Net.HttpListener.dll
+  System.Net.HttpListener -> C:\work\currentWork\runtime\artifacts\bin\System.Net.HttpListener\Release\net7.0-unix\System.Net.HttpListener.dll
+
+Build FAILED.
+
+C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System\Security\Principal\WindowsIdentity.cs(1162,84): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.PtrToStructure(IntPtr, Type)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the object might not be available. [C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System.Security.Principal.Windows.csproj]
+C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System\Security\Principal\WindowsIdentity.cs(1204,128): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.PtrToStructure(IntPtr, Type)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the object might not be available. [C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System.Security.Principal.Windows.csproj]
+C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System\Security\Principal\WindowsIdentity.cs(1214,109): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.PtrToStructure(IntPtr, Type)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the object might not be available. [C:\work\currentWork\runtime\src\libraries\System.Security.Principal.Windows\src\System.Security.Principal.Windows.csproj]
+    0 Warning(s)
+    3 Error(s)
+
+Time Elapsed 00:00:11.73

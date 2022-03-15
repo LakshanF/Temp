@@ -1,0 +1,36 @@
+C:\work\currentWork\runtime\.dotnet
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  System.Runtime -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime\ref\Release\net7.0\System.Runtime.dll
+  System.Private.CoreLib.Generators -> C:\work\currentWork\runtime\artifacts\bin\System.Private.CoreLib.Generators\Release\netstandard2.0\System.Private.CoreLib.Generators.dll
+  Microsoft.Interop.SourceGeneration -> C:\work\currentWork\runtime\artifacts\bin\Microsoft.Interop.SourceGeneration\Release\netstandard2.0\Microsoft.Interop.SourceGeneration.dll
+  System.ComponentModel -> C:\work\currentWork\runtime\artifacts\bin\System.ComponentModel\ref\Release\net7.0\System.ComponentModel.dll
+  System.Collections -> C:\work\currentWork\runtime\artifacts\bin\System.Collections\ref\Release\net7.0\System.Collections.dll
+  System.Runtime.Extensions -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime.Extensions\ref\Release\net7.0\System.Runtime.Extensions.dll
+  System.ObjectModel -> C:\work\currentWork\runtime\artifacts\bin\System.ObjectModel\ref\Release\net7.0\System.ObjectModel.dll
+  System.Collections.NonGeneric -> C:\work\currentWork\runtime\artifacts\bin\System.Collections.NonGeneric\ref\Release\net7.0\System.Collections.NonGeneric.dll
+  LibraryImportGenerator -> C:\work\currentWork\runtime\artifacts\bin\LibraryImportGenerator\Release\netstandard2.0\Microsoft.Interop.LibraryImportGenerator.dll
+  System.ComponentModel.Primitives -> C:\work\currentWork\runtime\artifacts\bin\System.ComponentModel.Primitives\ref\Release\net7.0\System.ComponentModel.Primitives.dll
+  System.Collections.NonGeneric -> C:\work\currentWork\runtime\artifacts\bin\System.Collections.NonGeneric\Release\net7.0\System.Collections.NonGeneric.dll
+  System.Collections.Specialized -> C:\work\currentWork\runtime\artifacts\bin\System.Collections.Specialized\ref\Release\net7.0\System.Collections.Specialized.dll
+  System.ComponentModel.Primitives -> C:\work\currentWork\runtime\artifacts\bin\System.ComponentModel.Primitives\Release\net7.0\System.ComponentModel.Primitives.dll
+  System.Private.CoreLib -> C:\work\currentWork\runtime\artifacts\bin\coreclr\windows.x64.Release\aotsdk\System.Private.CoreLib.dll
+  System.Collections -> C:\work\currentWork\runtime\artifacts\bin\System.Collections\Release\net7.0\System.Collections.dll
+C:\work\currentWork\runtime\src\libraries\System.Collections.Specialized\src\System\Collections\Specialized\NameObjectCollectionBase.cs(435,46): error IL3050: Using member 'System.Array.CreateInstance(Type, Int32)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. The code for an array of the specified type might not be available. [C:\work\currentWork\runtime\src\libraries\System.Collections.Specialized\src\System.Collections.Specialized.csproj]
+  System.Threading -> C:\work\currentWork\runtime\artifacts\bin\System.Threading\ref\Release\net7.0\System.Threading.dll
+  System.Private.Uri -> C:\work\currentWork\runtime\artifacts\bin\System.Private.Uri\Release\net7.0\System.Private.Uri.dll
+  System.Threading -> C:\work\currentWork\runtime\artifacts\bin\System.Threading\Release\net7.0\System.Threading.dll
+  System.Runtime.Experimental -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime.Experimental\ref\Release\net7.0\System.Runtime.dll
+  System.Runtime -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime\Release\net7.0\System.Runtime.dll
+  System.Runtime.Extensions -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime.Extensions\Release\net7.0\System.Runtime.Extensions.dll
+
+Build FAILED.
+
+C:\work\currentWork\runtime\src\libraries\System.Collections.Specialized\src\System\Collections\Specialized\NameObjectCollectionBase.cs(435,46): error IL3050: Using member 'System.Array.CreateInstance(Type, Int32)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. The code for an array of the specified type might not be available. [C:\work\currentWork\runtime\src\libraries\System.Collections.Specialized\src\System.Collections.Specialized.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:05.15

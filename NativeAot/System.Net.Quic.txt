@@ -1,0 +1,39 @@
+C:\work\currentWork\runtime\.dotnet
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Microsoft.Interop.SourceGeneration -> C:\work\currentWork\runtime\artifacts\bin\Microsoft.Interop.SourceGeneration\Release\netstandard2.0\Microsoft.Interop.SourceGeneration.dll
+  LibraryImportGenerator -> C:\work\currentWork\runtime\artifacts\bin\LibraryImportGenerator\Release\netstandard2.0\Microsoft.Interop.LibraryImportGenerator.dll
+  System.Runtime -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime\ref\Release\net7.0\System.Runtime.dll
+  System.Security.Principal -> C:\work\currentWork\runtime\artifacts\bin\System.Security.Principal\ref\Release\net7.0\System.Security.Principal.dll
+  Microsoft.Win32.Primitives -> C:\work\currentWork\runtime\artifacts\bin\Microsoft.Win32.Primitives\ref\Release\net7.0\Microsoft.Win32.Primitives.dll
+  System.Runtime.Extensions -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime.Extensions\ref\Release\net7.0\System.Runtime.Extensions.dll
+  System.Collections.NonGeneric -> C:\work\currentWork\runtime\artifacts\bin\System.Collections.NonGeneric\ref\Release\net7.0\System.Collections.NonGeneric.dll
+  System.Collections -> C:\work\currentWork\runtime\artifacts\bin\System.Collections\ref\Release\net7.0\System.Collections.dll
+  System.Runtime.InteropServices -> C:\work\currentWork\runtime\artifacts\bin\System.Runtime.InteropServices\ref\Release\net7.0\System.Runtime.InteropServices.dll
+  System.Memory -> C:\work\currentWork\runtime\artifacts\bin\System.Memory\ref\Release\net7.0\System.Memory.dll
+  System.Security.SecureString -> C:\work\currentWork\runtime\artifacts\bin\System.Security.SecureString\ref\Release\net7.0\System.Security.SecureString.dll
+  System.Net.Primitives -> C:\work\currentWork\runtime\artifacts\bin\System.Net.Primitives\ref\Release\net7.0\System.Net.Primitives.dll
+  System.Net.Sockets -> C:\work\currentWork\runtime\artifacts\bin\System.Net.Sockets\ref\Release\net7.0\System.Net.Sockets.dll
+  System.Security.Cryptography -> C:\work\currentWork\runtime\artifacts\bin\System.Security.Cryptography\ref\Release\net7.0\System.Security.Cryptography.dll
+  System.Security.Cryptography.X509Certificates -> C:\work\currentWork\runtime\artifacts\bin\System.Security.Cryptography.X509Certificates\ref\Release\net7.0\System.Security.Cryptography.X509Certificates.dll
+  System.Net.Security -> C:\work\currentWork\runtime\artifacts\bin\System.Net.Security\ref\Release\net7.0\System.Net.Security.dll
+  System.Net.Quic -> C:\work\currentWork\runtime\artifacts\bin\System.Net.Quic\ref\Release\net7.0\System.Net.Quic.dll
+C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System\Net\Quic\Implementations\MsQuic\Interop\MsQuicNativeMethods.cs(154,25): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(Delegate)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the delegate might not be available. Use the GetFunctionPointerForDelegate<TDelegate> overload instead. [C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System.Net.Quic.csproj]
+C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System\Net\Quic\Implementations\MsQuic\Interop\MsQuicNativeMethods.cs(154,25): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(Delegate)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the delegate might not be available. Use the GetFunctionPointerForDelegate<TDelegate> overload instead. [C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System.Net.Quic.csproj]
+  System.Net.Quic -> C:\work\currentWork\runtime\artifacts\bin\System.Net.Quic\Release\net7.0\System.Net.Quic.dll
+C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System\Net\Quic\Implementations\MsQuic\Interop\MsQuicNativeMethods.cs(154,25): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(Delegate)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the delegate might not be available. Use the GetFunctionPointerForDelegate<TDelegate> overload instead. [C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System.Net.Quic.csproj]
+C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System\Net\Quic\Implementations\MsQuic\Interop\MsQuicNativeMethods.cs(154,25): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(Delegate)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the delegate might not be available. Use the GetFunctionPointerForDelegate<TDelegate> overload instead. [C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System.Net.Quic.csproj]
+
+Build FAILED.
+
+C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System\Net\Quic\Implementations\MsQuic\Interop\MsQuicNativeMethods.cs(154,25): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(Delegate)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the delegate might not be available. Use the GetFunctionPointerForDelegate<TDelegate> overload instead. [C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System.Net.Quic.csproj]
+C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System\Net\Quic\Implementations\MsQuic\Interop\MsQuicNativeMethods.cs(154,25): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(Delegate)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the delegate might not be available. Use the GetFunctionPointerForDelegate<TDelegate> overload instead. [C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System.Net.Quic.csproj]
+C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System\Net\Quic\Implementations\MsQuic\Interop\MsQuicNativeMethods.cs(154,25): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(Delegate)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the delegate might not be available. Use the GetFunctionPointerForDelegate<TDelegate> overload instead. [C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System.Net.Quic.csproj]
+C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System\Net\Quic\Implementations\MsQuic\Interop\MsQuicNativeMethods.cs(154,25): error IL3050: Using member 'System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(Delegate)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. Marshalling code for the delegate might not be available. Use the GetFunctionPointerForDelegate<TDelegate> overload instead. [C:\work\currentWork\runtime\src\libraries\System.Net.Quic\src\System.Net.Quic.csproj]
+    0 Warning(s)
+    4 Error(s)
+
+Time Elapsed 00:00:12.26
